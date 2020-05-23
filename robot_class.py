@@ -80,7 +80,7 @@ class robot:
         for idx, landmks in enumerate(self.landmarks):
             dx = landmks[0] - self.x + self.rand() * self.measurement_noise
             dy = landmks[1] - self.y + self.rand() * self.measurement_noise
-            if dx < self.measurement_range and dy < self.measurement_range:
+            if self.measurement_range == -1 or abs(dx)<= self.measurement_range and abs(dy) <=self.measurement_range:
                 measurements.append([idx, dx, dy])
         ## TODO: iterate through all of the landmarks in a world
         
